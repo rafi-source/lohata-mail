@@ -12,7 +12,6 @@ export const EmailComposer = () => {
   const [to, setTo] = useState("");
   const [subject, setSubject] = useState("");
   const [message, setMessage] = useState("");
-  const [from, setFrom] = useState("");
   const [isSending, setIsSending] = useState(false);
   const { toast } = useToast();
 
@@ -36,7 +35,6 @@ export const EmailComposer = () => {
           to,
           subject,
           message,
-          from: from || undefined,
         },
       });
 
@@ -51,7 +49,6 @@ export const EmailComposer = () => {
       setTo("");
       setSubject("");
       setMessage("");
-      setFrom("");
     } catch (error: any) {
       console.error("Error sending email:", error);
       toast({
@@ -74,21 +71,6 @@ export const EmailComposer = () => {
       </CardHeader>
       <CardContent className="pt-6">
         <form onSubmit={handleSend} className="space-y-4">
-          <div className="space-y-2">
-            <Label htmlFor="from">From (optional)</Label>
-            <Input
-              id="from"
-              type="text"
-              placeholder="your-name@yourdomain.com"
-              value={from}
-              onChange={(e) => setFrom(e.target.value)}
-              className="transition-all duration-300 focus:ring-2 focus:ring-primary"
-            />
-            <p className="text-xs text-muted-foreground">
-              Leave empty to use default sender. For custom domains, verify your domain with Resend first.
-            </p>
-          </div>
-
           <div className="space-y-2">
             <Label htmlFor="to">To *</Label>
             <Input

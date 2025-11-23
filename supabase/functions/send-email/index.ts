@@ -13,7 +13,6 @@ interface EmailRequest {
   to: string;
   subject: string;
   message: string;
-  from?: string;
 }
 
 const handler = async (req: Request): Promise<Response> => {
@@ -22,13 +21,13 @@ const handler = async (req: Request): Promise<Response> => {
   }
 
   try {
-    const { to, subject, message, from }: EmailRequest = await req.json();
+    const { to, subject, message }: EmailRequest = await req.json();
 
     console.log("Sending email to:", to);
     console.log("Subject:", subject);
 
     const emailResponse = await resend.emails.send({
-      from: from || "onboarding@resend.dev",
+      from: "onboarding@resend.dev",
       to: [to],
       subject: subject,
       html: `
