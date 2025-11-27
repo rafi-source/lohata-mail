@@ -13,6 +13,21 @@ export default {
       },
     },
     extend: {
+      spacing: {
+        '14': '3.5rem',
+        '18': '4.5rem',
+        '72': '18rem',
+        '260': '65rem',
+      },
+      height: {
+        'navbar': '56px',
+        'button': '40px',
+        'email-row': '72px',
+      },
+      width: {
+        'sidebar': '260px',
+        'sidebar-collapsed': '72px',
+      },
       colors: {
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
